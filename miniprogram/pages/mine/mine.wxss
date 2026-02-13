@@ -1,0 +1,310 @@
+.page {
+  min-height: 100vh;
+  background: #F5F5F5;
+  padding-bottom: calc(env(safe-area-inset-bottom) + 120rpx);
+}
+
+/* ========== Header ========== */
+.header {
+  position: relative;
+  min-height: 320rpx;
+}
+
+.header-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #F5A623 0%, #FF8C42 100%);
+  border-radius: 0 0 60rpx 60rpx;
+}
+
+.header-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  padding: 0 6%;
+  padding-top: calc(env(safe-area-inset-top) + 80rpx);
+  padding-bottom: 48rpx;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.avatar-wrap {
+  flex-shrink: 0;
+  margin-right: 28rpx;
+}
+
+.avatar-default {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 6rpx solid rgba(255, 255, 255, 0.6);
+  transition: transform 0.3s ease;
+}
+
+.avatar-default:active {
+  transform: scale(0.92);
+}
+
+.avatar-icon {
+  font-size: 56rpx;
+}
+
+.avatar-img {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  border: 6rpx solid #fff;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.avatar-img:active {
+  transform: scale(0.92);
+}
+
+.user-text {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.nickname {
+  font-size: 34rpx;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.phone {
+  font-size: 26rpx;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: 8rpx;
+  letter-spacing: 2rpx;
+}
+
+/* 一键登录按钮 */
+.login-btn-wrap {
+  margin-top: 16rpx;
+}
+
+.login-confirm-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12rpx 40rpx;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 32rpx;
+  backdrop-filter: blur(4px);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.login-confirm-btn:active {
+  transform: scale(0.95);
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.login-confirm-text {
+  font-size: 26rpx;
+  color: #fff;
+  font-weight: 500;
+}
+
+/* ========== Cards ========== */
+.card {
+  margin: 24rpx 4% 0;
+  background: #fff;
+  border-radius: 20rpx;
+  overflow: hidden;
+  box-shadow: 0 2rpx 16rpx rgba(0, 0, 0, 0.04);
+}
+
+/* ========== Order Card ========== */
+.order-card {
+  margin-top: -40rpx;
+  position: relative;
+  z-index: 2;
+  animation: fadeInUp 0.4s ease-out;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28rpx 32rpx;
+  border-bottom: 1rpx solid #F2F2F2;
+}
+
+.card-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #333;
+}
+
+.card-link {
+  display: flex;
+  align-items: center;
+  font-size: 26rpx;
+  color: #999;
+  transition: color 0.2s;
+}
+
+.card-link:active {
+  color: #F5A623;
+}
+
+.card-link .arrow {
+  font-size: 32rpx;
+  margin-left: 4rpx;
+  color: #ccc;
+}
+
+.order-entries {
+  display: flex;
+  padding: 32rpx 0 28rpx;
+}
+
+.order-entry {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+.order-entry:active {
+  transform: scale(0.92);
+}
+
+.entry-icon-wrap {
+  position: relative;
+  width: 72rpx;
+  height: 72rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.entry-icon {
+  font-size: 44rpx;
+}
+
+.badge {
+  position: absolute;
+  top: -8rpx;
+  right: -16rpx;
+  min-width: 32rpx;
+  height: 32rpx;
+  padding: 0 8rpx;
+  background: #FF4D4F;
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: bounceIn 0.4s ease-out;
+}
+
+.badge text {
+  font-size: 20rpx;
+  color: #fff;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.entry-label {
+  font-size: 24rpx;
+  color: #666;
+  margin-top: 12rpx;
+}
+
+/* ========== Menu Card ========== */
+.menu-card {
+  margin-top: 24rpx;
+  animation: fadeInUp 0.5s ease-out;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100rpx;
+  padding: 0 32rpx;
+  border-bottom: 1rpx solid #F5F5F5;
+  transition: background 0.2s ease;
+}
+
+.menu-item:last-child {
+  border-bottom: none;
+}
+
+.menu-item:active {
+  background: #F9F9F9;
+}
+
+.menu-left {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+}
+
+.menu-icon {
+  font-size: 36rpx;
+  margin-right: 20rpx;
+  width: 44rpx;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.menu-text {
+  font-size: 28rpx;
+  color: #333;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.menu-arrow {
+  font-size: 36rpx;
+  color: #ccc;
+  font-weight: 300;
+  flex-shrink: 0;
+}
+
+/* ========== Logout ========== */
+.logout-wrap {
+  padding: 60rpx 6% 40rpx;
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.btn-logout {
+  width: 100%;
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: #999;
+  background: #fff;
+  border: 1rpx solid #ddd;
+  border-radius: 44rpx;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.btn-logout::after {
+  border: none;
+}
+
+.btn-logout:active {
+  background: #F5F5F5;
+  transform: scale(0.98);
+}

@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "点单",
+  "usingComponents": {
+    "spec-popup": "/components/spec-popup/spec-popup",
+    "cart-bar": "/components/cart-bar/cart-bar"
+  }
+}

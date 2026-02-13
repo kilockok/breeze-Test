@@ -1,0 +1,80 @@
+<!-- pages/menu/menu.wxml -->
+<view class="page">
+  <!-- Top bar: store / delivery info -->
+  <view class="top-bar" bind:tap="goSelectStore">
+    <view class="top-bar__left">
+      <text class="top-bar__icon">📍</text>
+      <view class="top-bar__info">
+        <text class="top-bar__title">{{storeName || '请选择门店'}}</text>
+        <text class="top-bar__sub" wx:if="{{orderType === 'delivery'}}">配送至: {{deliveryAddress || '请选择地址'}}</text>
+        <text class="top-bar__sub" wx:else>自取 · 到店取餐</text>
+      </view>
+    </view>
+    <text class="top-bar__arrow">›</text>
+  </view>
+
+  <!-- Main content: two-column layout -->
+  <view class="main">
+    <!-- LEFT: Category sidebar -->
+    <scroll-view scroll-y class="sidebar" enhanced show-scrollbar="{{false}}">
+      <view
+        wx:for="{{categories}}"
+        wx:key="id"
+        class="sidebar__item {{currentCategory === item.id ? 'sidebar__item--active' : ''}}"
+        data-id="{{item.id}}"
+        bind:tap="switchCategory"
+      >
+        <text class="sidebar__icon">{{item.icon}}</text>
+        <text class="sidebar__text">{{item.name}}</text>
+      </view>
+    </scroll-view>
+
+    <!-- RIGHT: Product list -->
+    <scroll-view scroll-y class="product-list" enhanced show-scrollbar="{{false}}">
+      <view class="product-list__header">
+        <text class="product-list__title">{{currentCategoryName}}</text>
+      </view>
+
+      <view
+        wx:for="{{filteredProducts}}"
+        wx:key="id"
+        class="product-card"
+      >
+        <!-- Product image placeholder -->
+        <view class="product-card__img">
+          <text class="product-card__emoji">🧋</text>
+        </view>
+
+        <!-- Product info -->
+        <view class="product-card__info">
+          <text class="product-card__name">{{item.name}}</text>
+          <text class="product-card__desc">{{item.desc}}</text>
+          <text class="product-card__sales">月售 {{item.sales}}</text>
+          <view class="product-card__bottom">
+            <view class="product-card__price">
+              <text class="product-card__yen">¥</text>
+              <text class="product-card__amount">{{item.price}}</text>
+            </view>
+            <view class="product-card__add" data-id="{{item.id}}" bind:tap="showSpecPopup">
+              <text class="product-card__add-icon">+</text>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!-- Bottom spacer for cart bar -->
+      <view class="product-list__spacer"></view>
+    </scroll-view>
+  </view>
+
+  <!-- Cart bar -->
+  <cart-bar count="{{cartCount}}" total="{{cartTotal}}" bind:checkout="goCart" />
+
+  <!-- Spec popup -->
+  <spec-popup
+    show="{{showSpec}}"
+    product="{{selectedProduct}}"
+    bind:confirm="onSpecConfirm"
+    bind:close="onSpecClose"
+  />
+</view>

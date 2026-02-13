@@ -1,0 +1,45 @@
+<view class="container">
+  <!-- Address List -->
+  <view class="address-list" wx:if="{{addressList.length > 0}}">
+    <view class="address-card" wx:for="{{addressList}}" wx:key="id" bindtap="selectAddress" data-index="{{index}}">
+      <view class="card-top">
+        <view class="user-info">
+          <text class="user-name">{{item.name}}</text>
+          <text class="user-phone">{{item.phone}}</text>
+          <view class="default-tag" wx:if="{{item.isDefault}}">默认</view>
+        </view>
+      </view>
+      <view class="address-detail">
+        <text>{{item.region[0]}}{{item.region[1]}}{{item.region[2]}}{{item.detail}}</text>
+      </view>
+      <view class="card-actions">
+        <view class="action-btn" catchtap="editAddress" data-index="{{index}}">
+          <text class="icon-edit">✎</text>
+          <text>编辑</text>
+        </view>
+        <view class="action-btn" catchtap="deleteAddress" data-index="{{index}}">
+          <text class="icon-delete">✕</text>
+          <text>删除</text>
+        </view>
+        <view class="action-btn action-default" catchtap="setDefault" data-index="{{index}}">
+          <view class="radio-circle {{item.isDefault ? 'radio-active' : ''}}">
+            <view class="radio-inner" wx:if="{{item.isDefault}}"></view>
+          </view>
+          <text>设为默认</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- Empty State -->
+  <view class="empty-state" wx:else>
+    <image class="empty-icon" src="/images/empty-address.png" mode="aspectFit"></image>
+    <text class="empty-text">暂无收货地址</text>
+    <view class="empty-add-btn" bindtap="addAddress">添加地址</view>
+  </view>
+
+  <!-- Fixed Bottom Add Button -->
+  <view class="bottom-bar">
+    <view class="add-btn" bindtap="addAddress">新增地址</view>
+  </view>
+</view>

@@ -1,0 +1,114 @@
+<!--pages/order-confirm/order-confirm.wxml-->
+<view class="page">
+
+  <!-- 订单类型指示 -->
+  <view class="order-type-bar">
+    <image class="type-icon" src="/images/{{orderType === 'pickup' ? 'pickup' : 'delivery'}}.png" mode="aspectFit" />
+    <text class="type-label">{{orderType === 'pickup' ? '到店自取' : '外卖配送'}}</text>
+  </view>
+
+  <!-- 自取：门店信息 -->
+  <view class="card store-card" wx:if="{{orderType === 'pickup' && store}}">
+    <view class="card-title-row">
+      <text class="card-icon">📍</text>
+      <text class="card-title">取餐门店</text>
+    </view>
+    <text class="store-name">{{store.name}}</text>
+    <text class="store-address">{{store.address}}</text>
+  </view>
+
+  <!-- 外送：配送地址 -->
+  <view class="card address-card" wx:if="{{orderType === 'delivery'}}" bindtap="changeAddress">
+    <view class="card-title-row">
+      <text class="card-icon">📍</text>
+      <text class="card-title">配送地址</text>
+      <text class="change-btn">修改 ›</text>
+    </view>
+    <block wx:if="{{address}}">
+      <view class="address-info">
+        <text class="address-name">{{address.name}}</text>
+        <text class="address-phone">{{address.phone}}</text>
+      </view>
+      <text class="address-detail">{{address.address}}</text>
+    </block>
+    <view class="no-address" wx:else>
+      <text>请选择配送地址</text>
+    </view>
+  </view>
+
+  <!-- 分割线 -->
+  <view class="divider"></view>
+
+  <!-- 商品列表 -->
+  <view class="card items-card">
+    <view class="card-title-row">
+      <text class="card-icon">🧋</text>
+      <text class="card-title">商品清单</text>
+    </view>
+    <view class="item-row" wx:for="{{cartItems}}" wx:key="index">
+      <view class="item-info">
+        <text class="item-name">{{item.name}}</text>
+        <view class="item-specs">
+          <text wx:if="{{item.ice}}">{{item.ice}}</text>
+          <text wx:if="{{item.ice && item.sugar}}"> / </text>
+          <text wx:if="{{item.sugar}}">{{item.sugar}}</text>
+          <text wx:if="{{item.toppings && item.toppings.length}}" class="topping-text"> +{{item.toppings.join('、')}}</text>
+        </view>
+      </view>
+      <text class="item-count">x{{item.count}}</text>
+      <text class="item-price">¥{{item.priceText}}</text>
+    </view>
+  </view>
+
+  <!-- 分割线 -->
+  <view class="divider"></view>
+
+  <!-- 备注 -->
+  <view class="card remark-card">
+    <textarea
+      class="remark-input"
+      placeholder="备注：如需要餐具、特殊要求等"
+      placeholder-class="remark-placeholder"
+      maxlength="200"
+      value="{{remark}}"
+      bindinput="onRemarkInput"
+    />
+  </view>
+
+  <!-- 价格汇总 -->
+  <view class="card price-card">
+    <view class="price-row">
+      <text class="price-label">商品小计</text>
+      <text class="price-value">¥{{subtotalText}}</text>
+    </view>
+    <view class="price-row" wx:if="{{orderType === 'delivery'}}">
+      <view class="price-label-wrap">
+        <text class="price-label">配送费</text>
+        <text class="price-hint" wx:if="{{subtotal < 30}}">满30免配送</text>
+      </view>
+      <text class="price-value" wx:if="{{deliveryFee > 0}}">¥{{deliveryFeeText}}</text>
+      <text class="price-value free" wx:else>免配送费</text>
+    </view>
+    <view class="price-row total-row">
+      <text class="price-label">合计</text>
+      <text class="price-total">¥{{totalPriceText}}</text>
+    </view>
+  </view>
+
+  <!-- 底部占位 -->
+  <view class="bottom-placeholder"></view>
+
+  <!-- 固定底部栏 -->
+  <view class="bottom-bar">
+    <view class="bottom-inner">
+      <view class="bottom-left">
+        <text class="bottom-total-label">合计：</text>
+        <text class="bottom-total-price">¥{{totalPriceText}}</text>
+      </view>
+      <view class="submit-btn" bindtap="submitOrder">
+        <text class="submit-text">提交订单</text>
+      </view>
+    </view>
+  </view>
+
+</view>

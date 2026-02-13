@@ -1,0 +1,69 @@
+<view class="page">
+  <!-- Tab Bar -->
+  <scroll-view class="tab-bar" scroll-x enable-flex>
+    <view
+      class="tab-item {{currentTab === item.key ? 'active' : ''}}"
+      wx:for="{{tabs}}"
+      wx:key="key"
+      data-key="{{item.key}}"
+      bindtap="switchTab"
+    >
+      <text class="tab-text">{{item.label}}</text>
+    </view>
+  </scroll-view>
+
+  <!-- Order List -->
+  <scroll-view class="order-list" scroll-y wx:if="{{filteredOrders.length > 0}}">
+    <view
+      class="order-card"
+      wx:for="{{filteredOrders}}"
+      wx:key="id"
+      data-id="{{item.id}}"
+      bindtap="goDetail"
+    >
+      <!-- Header -->
+      <view class="card-header">
+        <text class="store-name">{{item.storeName}}</text>
+        <text class="status status-{{item.status}}">{{item.statusText}}</text>
+      </view>
+
+      <!-- Items -->
+      <view class="card-body">
+        <view class="item-row" wx:for="{{item.items}}" wx:if="{{index < 2}}" wx:for-item="prod" wx:key="name">
+          <text class="item-name">{{prod.name}}</text>
+          <text class="item-spec">{{prod.spec}}</text>
+          <text class="item-count">x{{prod.count}}</text>
+        </view>
+        <view class="item-more" wx:if="{{item.items.length > 2}}">
+          <text>等{{item.items.length}}件商品</text>
+        </view>
+      </view>
+
+      <!-- Footer -->
+      <view class="card-footer">
+        <text class="order-time">{{item.createTime}}</text>
+        <view class="footer-right">
+          <text class="total-price">¥{{item.totalPrice}}</text>
+          <button
+            class="btn-reorder"
+            wx:if="{{item.status === 'completed'}}"
+            catchtap="reorder"
+            data-id="{{item.id}}"
+          >再来一单</button>
+          <button
+            class="btn-pay"
+            wx:if="{{item.status === 'pending'}}"
+            catchtap="goPay"
+            data-id="{{item.id}}"
+          >去支付</button>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- Empty State -->
+  <view class="empty-state" wx:if="{{filteredOrders.length === 0}}">
+    <text class="empty-icon">📋</text>
+    <text class="empty-text">暂无订单</text>
+  </view>
+</view>

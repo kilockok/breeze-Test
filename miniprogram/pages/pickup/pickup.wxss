@@ -1,0 +1,179 @@
+/* pages/pickup/pickup.wxss */
+page {
+  background-color: #F5F5F5;
+}
+
+.container {
+  min-height: 100vh;
+  padding-bottom: calc(40rpx + env(safe-area-inset-bottom));
+}
+
+/* 搜索栏 */
+.search-bar {
+  padding: 20rpx 4%;
+  background-color: #fff;
+}
+
+.search-input-wrap {
+  display: flex;
+  align-items: center;
+  height: 72rpx;
+  background-color: #F5F5F5;
+  border-radius: 36rpx;
+  padding: 0 28rpx;
+}
+
+.search-icon {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 16rpx;
+  opacity: 0.4;
+  flex-shrink: 0;
+}
+
+.search-input {
+  flex: 1;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.search-placeholder {
+  color: #bbb;
+  font-size: 28rpx;
+}
+
+/* 地图区域 */
+.map-section {
+  margin: 20rpx 4% 0;
+  border-radius: 20rpx;
+  overflow: hidden;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.06);
+  animation: fadeInUp 0.4s ease-out;
+}
+
+.store-map {
+  width: 100%;
+  height: 50vw;
+  min-height: 300rpx;
+  max-height: 500rpx;
+}
+
+/* 门店列表 */
+.store-list {
+  margin-top: 20rpx;
+  padding: 0 4%;
+}
+
+.section-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20rpx;
+  padding-left: 4rpx;
+}
+
+/* 门店卡片 */
+.store-card {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 20rpx;
+  padding: 28rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.05);
+  animation: fadeInUp 0.35s ease-out;
+  transition: transform 0.2s ease;
+}
+
+.store-card:active {
+  transform: scale(0.98);
+}
+
+.store-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.store-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 14rpx;
+  flex-wrap: wrap;
+  gap: 8rpx;
+}
+
+.store-name {
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #333;
+  margin-right: 12rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 55vw;
+}
+
+.distance-badge {
+  flex-shrink: 0;
+  font-size: 22rpx;
+  font-weight: 600;
+  color: #F5A623;
+  background-color: rgba(245, 166, 35, 0.1);
+  padding: 4rpx 16rpx;
+  border-radius: 20rpx;
+}
+
+.store-address {
+  font-size: 24rpx;
+  color: #888;
+  margin-bottom: 8rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.store-hours {
+  font-size: 24rpx;
+  color: #aaa;
+}
+
+/* 选择按钮 */
+.store-action {
+  flex-shrink: 0;
+  margin-left: 20rpx;
+}
+
+.select-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120rpx;
+  height: 64rpx;
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #fff;
+  background-color: #F5A623;
+  border-radius: 32rpx;
+  border: none;
+  padding: 0;
+  line-height: 64rpx;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.select-btn:active {
+  transform: scale(0.92);
+  opacity: 0.85;
+}
+
+.select-btn::after {
+  border: none;
+}
+
+/* 空状态 */
+.empty-tip {
+  text-align: center;
+  padding: 80rpx 0;
+  color: #ccc;
+  font-size: 28rpx;
+  animation: fadeIn 0.5s ease-out;
+}

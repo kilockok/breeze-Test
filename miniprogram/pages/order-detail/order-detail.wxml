@@ -1,0 +1,100 @@
+<view class="page" wx:if="{{order}}">
+
+  <!-- Status Header -->
+  <view class="status-header status-{{order.status}}">
+    <text class="status-icon">{{order.status === 'pending' ? '⏳' : order.status === 'making' ? '🧋' : '✅'}}</text>
+    <text class="status-text">{{order.status === 'pending' ? '待支付' : order.status === 'making' ? '制作中' : '已完成'}}</text>
+    <text class="status-desc">{{order.status === 'pending' ? '请在15分钟内完成支付' : order.status === 'making' ? '店员正在精心制作您的饮品' : '感谢您的惠顾，期待再次光临'}}</text>
+  </view>
+
+  <!-- Scrollable Content -->
+  <view class="content">
+
+    <!-- Store / Delivery Info Card -->
+    <view class="card store-card">
+      <view class="store-row">
+        <text class="store-type-icon">{{order.orderType === 'delivery' ? '🚗' : '🏪'}}</text>
+        <view class="store-info">
+          <text class="store-name">{{order.storeName}}</text>
+          <text class="order-type-label">{{order.orderType === 'delivery' ? '外卖配送' : '到店自取'}}</text>
+        </view>
+      </view>
+      <view class="address-row" wx:if="{{order.orderType === 'delivery' && order.address}}">
+        <text class="address-icon">📍</text>
+        <text class="address-text">{{order.address}}</text>
+      </view>
+    </view>
+
+    <!-- Order Items Card -->
+    <view class="card items-card">
+      <view class="card-title">订单商品</view>
+      <view class="item-row" wx:for="{{order.items}}" wx:key="index">
+        <view class="item-left">
+          <text class="item-name">{{item.name}}</text>
+          <text class="item-spec">{{item.spec}}</text>
+        </view>
+        <view class="item-right">
+          <text class="item-count">x{{item.count}}</text>
+          <text class="item-price">¥{{item.price}}</text>
+        </view>
+      </view>
+      <view class="summary-section">
+        <view class="summary-row">
+          <text>商品小计</text>
+          <text>¥{{order.subtotal}}</text>
+        </view>
+        <view class="summary-row" wx:if="{{order.orderType === 'delivery'}}">
+          <text>配送费</text>
+          <text>¥{{order.deliveryFee}}</text>
+        </view>
+        <view class="summary-row total-row">
+          <text>合计</text>
+          <text class="total-price">¥{{order.totalPrice}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- Order Info Card -->
+    <view class="card info-card">
+      <view class="card-title">订单信息</view>
+      <view class="info-row">
+        <text class="info-label">订单编号</text>
+        <view class="info-value-wrap">
+          <text class="info-value">{{order.orderId}}</text>
+          <text class="copy-btn" bindtap="copyOrderId">复制</text>
+        </view>
+      </view>
+      <view class="info-row">
+        <text class="info-label">下单时间</text>
+        <text class="info-value">{{order.createTime}}</text>
+      </view>
+      <view class="info-row">
+        <text class="info-label">支付方式</text>
+        <text class="info-value">微信支付</text>
+      </view>
+    </view>
+
+  </view>
+
+  <!-- Bottom Action Bar -->
+  <view class="action-bar">
+    <block wx:if="{{order.status === 'pending'}}">
+      <button class="btn btn-outline" bindtap="cancelOrder">取消订单</button>
+      <button class="btn btn-primary" bindtap="goPay">去支付</button>
+    </block>
+    <block wx:elif="{{order.status === 'making'}}">
+      <button class="btn btn-primary btn-full" bindtap="contactStore">联系门店</button>
+    </block>
+    <block wx:elif="{{order.status === 'completed'}}">
+      <button class="btn btn-outline" bindtap="deleteOrder">删除订单</button>
+      <button class="btn btn-primary" bindtap="reorder">再来一单</button>
+    </block>
+  </view>
+
+</view>
+
+<!-- Empty State -->
+<view class="empty" wx:else>
+  <text class="empty-icon">📋</text>
+  <text class="empty-text">订单不存在</text>
+</view>

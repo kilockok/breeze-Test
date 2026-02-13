@@ -1,0 +1,59 @@
+<!-- pages/pickup/pickup.wxml -->
+<view class="container">
+  <!-- 搜索栏 -->
+  <view class="search-bar">
+    <view class="search-input-wrap">
+      <image class="search-icon" src="/images/icon-search.png" mode="aspectFit" />
+      <input
+        class="search-input"
+        placeholder="搜索门店"
+        placeholder-class="search-placeholder"
+        bindinput="onSearch"
+        value="{{searchValue}}"
+      />
+    </view>
+  </view>
+
+  <!-- 地图区域 -->
+  <view class="map-section" wx:if="{{showMap}}">
+    <map
+      class="store-map"
+      latitude="{{latitude}}"
+      longitude="{{longitude}}"
+      markers="{{markers}}"
+      scale="13"
+      show-location
+    />
+  </view>
+
+  <!-- 门店列表 -->
+  <view class="store-list">
+    <view class="section-title">附近门店</view>
+
+    <view
+      class="store-card"
+      wx:for="{{stores}}"
+      wx:key="id"
+    >
+      <view class="store-info" bindtap="openMap" data-store="{{item}}">
+        <view class="store-header">
+          <text class="store-name">{{item.name}}</text>
+          <view class="distance-badge">{{item.distanceText}}</view>
+        </view>
+        <view class="store-address">📍 {{item.address}}</view>
+        <view class="store-hours">🕐 营业时间：{{item.hours}}</view>
+      </view>
+      <view class="store-action">
+        <button
+          class="select-btn"
+          bindtap="selectStore"
+          data-index="{{index}}"
+        >选择</button>
+      </view>
+    </view>
+
+    <view class="empty-tip" wx:if="{{stores.length === 0}}">
+      <text>暂无匹配的门店</text>
+    </view>
+  </view>
+</view>

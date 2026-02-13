@@ -1,0 +1,56 @@
+<view class="delivery-page">
+
+  <!-- Address Selection -->
+  <view class="address-card" bindtap="chooseAddress">
+    <view class="address-accent"></view>
+    <block wx:if="{{selectedAddress}}">
+      <view class="address-content">
+        <view class="address-user">
+          <text class="address-name">{{selectedAddress.name}}</text>
+          <text class="address-phone">{{selectedAddress.phone}}</text>
+        </view>
+        <view class="address-detail">{{selectedAddress.address}}</view>
+      </view>
+      <view class="address-arrow">
+        <text class="arrow-icon">›</text>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="address-empty">
+        <text class="empty-text">请选择收货地址</text>
+      </view>
+      <view class="address-add">
+        <text class="add-icon">+</text>
+      </view>
+    </block>
+  </view>
+
+  <!-- Delivery Info -->
+  <view class="info-card">
+    <view class="info-row">
+      <text class="info-label">预计送达时间</text>
+      <text class="info-value">约30-45分钟</text>
+    </view>
+    <view class="info-divider"></view>
+    <view class="info-row">
+      <text class="info-label">配送费</text>
+      <text class="info-value">¥{{deliveryFee}}.00 (满{{freeDeliveryThreshold}}免配送费)</text>
+    </view>
+  </view>
+
+  <!-- Store Assignment Note -->
+  <view class="store-note">
+    <text class="note-icon">📍</text>
+    <text class="note-text">系统将自动分配最近门店</text>
+  </view>
+
+  <!-- CTA Button -->
+  <view class="bottom-bar">
+    <button
+      class="cta-btn {{selectedAddress ? '' : 'cta-btn--disabled'}}"
+      disabled="{{!selectedAddress}}"
+      bindtap="startOrder"
+    >开始点单</button>
+  </view>
+
+</view>

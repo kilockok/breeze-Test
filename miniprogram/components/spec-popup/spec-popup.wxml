@@ -1,0 +1,93 @@
+<view class="spec-popup {{show ? 'show' : ''}}" wx:if="{{show}}">
+  <!-- Overlay mask -->
+  <view class="overlay" bind:tap="close" catchtouchmove="preventScroll"></view>
+
+  <!-- Bottom sheet -->
+  <view class="sheet {{show ? 'slide-up' : ''}}">
+    <!-- Close button -->
+    <view class="close-btn" bind:tap="close">✕</view>
+
+    <scroll-view scroll-y class="sheet-scroll">
+      <!-- Product info header -->
+      <view class="product-header">
+        <image class="product-image" src="{{product.image || '/images/product-placeholder.png'}}" mode="aspectFill"></image>
+        <view class="product-info">
+          <text class="product-name">{{product.name}}</text>
+          <text class="product-desc">{{product.desc}}</text>
+          <text class="product-price">¥{{product.price}}</text>
+        </view>
+      </view>
+
+      <view class="divider"></view>
+
+      <!-- Ice selection -->
+      <view class="spec-section">
+        <text class="spec-title">冰量</text>
+        <view class="chips-row">
+          <view
+            wx:for="{{iceOptions}}"
+            wx:key="value"
+            class="chip {{selectedIce === item.value ? 'chip-selected' : ''}}"
+            data-value="{{item.value}}"
+            bind:tap="selectIce"
+          >
+            {{item.label}}
+          </view>
+        </view>
+      </view>
+
+      <!-- Sugar selection -->
+      <view class="spec-section">
+        <text class="spec-title">糖度</text>
+        <view class="chips-row">
+          <view
+            wx:for="{{sugarOptions}}"
+            wx:key="value"
+            class="chip {{selectedSugar === item.value ? 'chip-selected' : ''}}"
+            data-value="{{item.value}}"
+            bind:tap="selectSugar"
+          >
+            {{item.label}}
+          </view>
+        </view>
+      </view>
+
+      <!-- Toppings multi-select -->
+      <view class="spec-section">
+        <text class="spec-title">加料</text>
+        <view class="chips-row">
+          <view
+            wx:for="{{toppingOptions}}"
+            wx:key="value"
+            class="chip {{selectedToppings.indexOf(item.value) !== -1 ? 'chip-topping-selected' : ''}}"
+            data-value="{{item.value}}"
+            bind:tap="toggleTopping"
+          >
+            {{item.label}} +¥{{item.price}}
+          </view>
+        </view>
+      </view>
+
+      <view class="divider"></view>
+
+      <!-- Quantity selector -->
+      <view class="quantity-section">
+        <text class="quantity-label">数量</text>
+        <view class="quantity-controls">
+          <view class="qty-btn {{count <= 1 ? 'qty-btn-disabled' : ''}}" data-type="minus" bind:tap="changeCount">−</view>
+          <text class="qty-number">{{count}}</text>
+          <view class="qty-btn" data-type="plus" bind:tap="changeCount">+</view>
+        </view>
+      </view>
+    </scroll-view>
+
+    <!-- Bottom bar: total + add to cart -->
+    <view class="bottom-bar">
+      <view class="total-row">
+        <text class="total-label">合计</text>
+        <text class="total-price">¥{{totalPrice}}</text>
+      </view>
+      <view class="add-cart-btn" bind:tap="confirm">加入购物车</view>
+    </view>
+  </view>
+</view>

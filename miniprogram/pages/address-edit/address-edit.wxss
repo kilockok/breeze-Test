@@ -1,0 +1,127 @@
+.container {
+  min-height: 100vh;
+  background: #F5F5F5;
+  padding: 24rpx 4%;
+  box-sizing: border-box;
+}
+
+/* Form Section */
+.form-section {
+  background: #FFFFFF;
+  border-radius: 16rpx;
+  overflow: hidden;
+  animation: fadeInUp 0.35s ease-out;
+}
+
+.form-row {
+  display: flex;
+  align-items: center;
+  padding: 28rpx 24rpx;
+  border-bottom: 1rpx solid #F0F0F0;
+}
+
+.form-row:last-child {
+  border-bottom: none;
+}
+
+.form-row-textarea {
+  align-items: flex-start;
+}
+
+.form-row-switch {
+  justify-content: space-between;
+}
+
+.form-label {
+  width: 150rpx;
+  font-size: 28rpx;
+  color: #666666;
+  flex-shrink: 0;
+}
+
+.form-input {
+  flex: 1;
+  font-size: 28rpx;
+  color: #333333;
+  height: 48rpx;
+  min-width: 0;
+}
+
+.form-picker {
+  flex: 1;
+  min-width: 0;
+}
+
+.picker-text {
+  font-size: 28rpx;
+  color: #333333;
+  line-height: 48rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.picker-text.placeholder {
+  color: #CCCCCC;
+}
+
+.form-textarea {
+  flex: 1;
+  font-size: 28rpx;
+  color: #333333;
+  min-height: 80rpx;
+  line-height: 1.6;
+  min-width: 0;
+}
+
+.form-switch {
+  transform: scale(0.85);
+  flex-shrink: 0;
+}
+
+/* Buttons */
+.btn-group {
+  margin-top: 48rpx;
+  padding: 0 4rpx;
+  animation: fadeInUp 0.5s ease-out;
+}
+
+.save-btn {
+  width: 100%;
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #FFFFFF;
+  background: linear-gradient(135deg, #F5A623, #F7B84E);
+  border-radius: 44rpx;
+  box-sizing: border-box;
+  box-shadow: 0 6rpx 20rpx rgba(245, 166, 35, 0.35);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.save-btn:active {
+  transform: scale(0.98);
+  opacity: 0.9;
+}
+
+.wx-btn {
+  width: 100%;
+  height: 88rpx;
+  line-height: 86rpx;
+  text-align: center;
+  font-size: 30rpx;
+  color: #F5A623;
+  border: 1rpx solid #F5A623;
+  border-radius: 44rpx;
+  margin-top: 24rpx;
+  box-sizing: border-box;
+  background: #FFFFFF;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.wx-btn:active {
+  transform: scale(0.98);
+  background: #FFF8EE;
+}
