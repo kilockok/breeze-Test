@@ -2,7 +2,7 @@
 
 .page {
   min-height: 100vh;
-  background: #F5F5F5;
+  background: var(--color-bg);
   padding-bottom: calc(140rpx + env(safe-area-inset-bottom));
 }
 
@@ -12,12 +12,10 @@
   align-items: center;
   justify-content: center;
   padding: 20rpx 0;
-  background: linear-gradient(135deg, #F5A623, #F7B84E);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
 }
 
-.type-icon {
-  width: 36rpx;
-  height: 36rpx;
+.type-icon-view {
   margin-right: 12rpx;
   flex-shrink: 0;
 }
@@ -30,10 +28,11 @@
 
 /* 通用卡片 */
 .card {
-  background: #fff;
-  margin: 20rpx 4%;
+  background: var(--color-card);
+  margin: 24rpx 4%;
   border-radius: 16rpx;
   padding: 28rpx;
+  box-shadow: 0 2rpx 16rpx rgba(100, 70, 30, 0.06);
   animation: fadeInUp 0.35s ease-out;
 }
 
@@ -43,8 +42,7 @@
   margin-bottom: 20rpx;
 }
 
-.card-icon {
-  font-size: 28rpx;
+.card-icon-view {
   margin-right: 10rpx;
   flex-shrink: 0;
 }
@@ -82,7 +80,7 @@
 .change-btn {
   margin-left: auto;
   font-size: 24rpx;
-  color: #F5A623;
+  color: var(--color-primary);
   flex-shrink: 0;
 }
 
@@ -123,7 +121,7 @@
 /* 分割线 */
 .divider {
   height: 2rpx;
-  background: #ECECEC;
+  background: var(--color-border);
   margin: 0 4%;
 }
 
@@ -234,8 +232,8 @@
 
 .price-hint {
   font-size: 20rpx;
-  color: #F5A623;
-  background: rgba(245, 166, 35, 0.1);
+  color: var(--color-primary);
+  background: var(--color-primary-light);
   padding: 4rpx 12rpx;
   border-radius: 6rpx;
 }
@@ -246,7 +244,7 @@
 }
 
 .price-value.free {
-  color: #F5A623;
+  color: var(--color-primary);
   font-size: 24rpx;
 }
 
@@ -258,7 +256,7 @@
 
 .price-total {
   font-size: 36rpx;
-  color: #F5A623;
+  color: var(--color-primary);
   font-weight: 700;
 }
 
@@ -273,8 +271,8 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: #fff;
-  box-shadow: 0 -4rpx 16rpx rgba(0, 0, 0, 0.06);
+  background: var(--color-card);
+  box-shadow: 0 -4rpx 16rpx rgba(100, 70, 30, 0.06);
   z-index: 100;
   padding-bottom: env(safe-area-inset-bottom);
   animation: slideUp 0.3s ease-out;
@@ -303,20 +301,20 @@
 
 .bottom-total-price {
   font-size: 40rpx;
-  color: #F5A623;
+  color: var(--color-primary);
   font-weight: 700;
   margin-left: 4rpx;
 }
 
 .submit-btn {
-  background: linear-gradient(135deg, #F5A623, #F7C56E);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
   border-radius: 44rpx;
   padding: 0 48rpx;
   height: 80rpx;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4rpx 16rpx rgba(245, 166, 35, 0.35);
+  box-shadow: 0 4rpx 16rpx rgba(232, 145, 58, 0.3);
   flex-shrink: 0;
   transition: transform 0.2s ease, opacity 0.2s ease;
 }

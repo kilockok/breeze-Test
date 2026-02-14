@@ -1,6 +1,6 @@
 /* pages/pickup/pickup.wxss */
 page {
-  background-color: #F5F5F5;
+  background-color: var(--color-bg);
 }
 
 .container {
@@ -11,30 +11,27 @@ page {
 /* 搜索栏 */
 .search-bar {
   padding: 20rpx 4%;
-  background-color: #fff;
+  background-color: var(--color-card);
 }
 
 .search-input-wrap {
   display: flex;
   align-items: center;
   height: 72rpx;
-  background-color: #F5F5F5;
+  background-color: var(--color-bg);
   border-radius: 36rpx;
   padding: 0 28rpx;
 }
 
-.search-icon {
-  width: 32rpx;
-  height: 32rpx;
+.search-icon-view {
   margin-right: 16rpx;
-  opacity: 0.4;
   flex-shrink: 0;
 }
 
 .search-input {
   flex: 1;
   font-size: 28rpx;
-  color: #333;
+  color: var(--color-text);
 }
 
 .search-placeholder {
@@ -76,11 +73,11 @@ page {
 .store-card {
   display: flex;
   align-items: center;
-  background-color: #fff;
+  background-color: var(--color-card);
   border-radius: 20rpx;
   padding: 28rpx;
   margin-bottom: 20rpx;
-  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4rpx 16rpx rgba(100, 70, 30, 0.06);
   animation: fadeInUp 0.35s ease-out;
   transition: transform 0.2s ease;
 }
@@ -117,22 +114,32 @@ page {
   flex-shrink: 0;
   font-size: 22rpx;
   font-weight: 600;
-  color: #F5A623;
-  background-color: rgba(245, 166, 35, 0.1);
+  color: var(--color-primary);
+  background-color: var(--color-primary-light);
   padding: 4rpx 16rpx;
   border-radius: 20rpx;
 }
 
-.store-address {
+.store-detail-row {
+  display: flex;
+  align-items: center;
+  margin-top: 10rpx;
+}
+
+.store-detail-icon {
+  margin-right: 8rpx;
+  flex-shrink: 0;
+}
+
+.store-address-text {
   font-size: 24rpx;
-  color: #888;
-  margin-bottom: 8rpx;
+  color: var(--color-text-secondary);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.store-hours {
+.store-hours-text {
   font-size: 24rpx;
   color: #aaa;
 }
@@ -152,7 +159,7 @@ page {
   font-size: 26rpx;
   font-weight: 600;
   color: #fff;
-  background-color: #F5A623;
+  background-color: var(--color-primary);
   border-radius: 32rpx;
   border: none;
   padding: 0;

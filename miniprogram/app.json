@@ -12,8 +12,8 @@
     "pages/address-edit/address-edit"
   ],
   "tabBar": {
-    "color": "#999999",
-    "selectedColor": "#F5A623",
+    "color": "#8C8C8C",
+    "selectedColor": "#E8913A",
     "backgroundColor": "#ffffff",
     "borderStyle": "white",
     "list": [
@@ -41,7 +41,7 @@
     "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTitleText": "清凤时光",
     "navigationBarTextStyle": "black",
-    "backgroundColor": "#F5F5F5"
+    "backgroundColor": "#F7F3EF"
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json",

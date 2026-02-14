@@ -12,7 +12,7 @@
         <view class="address-detail">{{selectedAddress.address}}</view>
       </view>
       <view class="address-arrow">
-        <text class="arrow-icon">›</text>
+        <text class="arrow-icon">></text>
       </view>
     </block>
     <block wx:else>
@@ -40,7 +40,7 @@
 
   <!-- Store Assignment Note -->
   <view class="store-note">
-    <text class="note-icon">📍</text>
+    <view class="ic ic-xs ic-location ic--gray note-icon-view"></view>
     <text class="note-text">系统将自动分配最近门店</text>
   </view>
 

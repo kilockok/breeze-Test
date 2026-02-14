@@ -1,12 +1,12 @@
 // 模拟数据
 
 export const categories = [
-  { id: 'hot', name: '热门推荐', icon: '🔥' },
-  { id: 'classic', name: '经典奶茶', icon: '🧋' },
-  { id: 'fruit', name: '鲜果茶', icon: '🍑' },
-  { id: 'milk', name: '鲜奶系列', icon: '🥛' },
-  { id: 'special', name: '季节限定', icon: '🌸' },
-  { id: 'snack', name: '小食甜点', icon: '🍰' },
+  { id: 'hot', name: '热门推荐', icon: 'hot' },
+  { id: 'classic', name: '经典奶茶', icon: 'cup' },
+  { id: 'fruit', name: '鲜果茶', icon: 'fruit' },
+  { id: 'milk', name: '鲜奶系列', icon: 'milk' },
+  { id: 'special', name: '季节限定', icon: 'blossom' },
+  { id: 'snack', name: '小食甜点', icon: 'cake' },
 ]
 
 export const products = [

@@ -23,7 +23,7 @@
     </view>
     <view class="form-row form-row-switch">
       <text class="form-label">设为默认地址</text>
-      <switch class="form-switch" checked="{{isDefault}}" bindchange="onSwitchChange" color="#F5A623" />
+      <switch class="form-switch" checked="{{isDefault}}" bindchange="onSwitchChange" color="#E8913A" />
     </view>
   </view>
 

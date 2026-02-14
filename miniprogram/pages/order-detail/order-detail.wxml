@@ -2,7 +2,9 @@
 
   <!-- Status Header -->
   <view class="status-header status-{{order.status}}">
-    <text class="status-icon">{{order.status === 'pending' ? '⏳' : order.status === 'making' ? '🧋' : '✅'}}</text>
+    <view wx:if="{{order.status === 'pending'}}" class="ic ic-xl ic-pending ic--white"></view>
+    <view wx:elif="{{order.status === 'making'}}" class="ic ic-xl ic-making ic--white"></view>
+    <view wx:else class="ic ic-xl ic-done ic--white"></view>
     <text class="status-text">{{order.status === 'pending' ? '待支付' : order.status === 'making' ? '制作中' : '已完成'}}</text>
     <text class="status-desc">{{order.status === 'pending' ? '请在15分钟内完成支付' : order.status === 'making' ? '店员正在精心制作您的饮品' : '感谢您的惠顾，期待再次光临'}}</text>
   </view>
@@ -13,14 +15,15 @@
     <!-- Store / Delivery Info Card -->
     <view class="card store-card">
       <view class="store-row">
-        <text class="store-type-icon">{{order.orderType === 'delivery' ? '🚗' : '🏪'}}</text>
+        <view wx:if="{{order.orderType === 'delivery'}}" class="ic ic-lg ic-car ic--primary store-type-icon-view"></view>
+        <view wx:else class="ic ic-lg ic-shop ic--primary store-type-icon-view"></view>
         <view class="store-info">
           <text class="store-name">{{order.storeName}}</text>
           <text class="order-type-label">{{order.orderType === 'delivery' ? '外卖配送' : '到店自取'}}</text>
         </view>
       </view>
       <view class="address-row" wx:if="{{order.orderType === 'delivery' && order.address}}">
-        <text class="address-icon">📍</text>
+        <view class="ic ic-sm ic-location ic--gray address-icon-view"></view>
         <text class="address-text">{{order.address}}</text>
       </view>
     </view>
@@ -95,6 +98,6 @@
 
 <!-- Empty State -->
 <view class="empty" wx:else>
-  <text class="empty-icon">📋</text>
+  <view class="ic ic-huge ic-clipboard ic--gray"></view>
   <text class="empty-text">订单不存在</text>
 </view>

@@ -114,7 +114,7 @@ Page({
     wx.showModal({
       title: '提示',
       content: '确定要取消该订单吗？',
-      confirmColor: '#F5A623',
+      confirmColor: '#E8913A',
       success: (res) => {
         if (!res.confirm) return
 
@@ -205,7 +205,7 @@ Page({
     wx.showModal({
       title: '提示',
       content: '确定要删除该订单吗？删除后不可恢复。',
-      confirmColor: '#F5A623',
+      confirmColor: '#E8913A',
       success: (res) => {
         if (!res.confirm) return
 

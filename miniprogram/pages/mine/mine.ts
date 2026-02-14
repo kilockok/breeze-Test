@@ -148,7 +148,7 @@ Page({
       content: '清凤时光 — 用心做好每一杯茶\n\n版本：v1.0.0',
       showCancel: false,
       confirmText: '知道了',
-      confirmColor: '#F5A623',
+      confirmColor: '#E8913A',
     })
   },
 
@@ -156,7 +156,7 @@ Page({
     wx.showModal({
       title: '提示',
       content: '确定要退出登录吗？',
-      confirmColor: '#F5A623',
+      confirmColor: '#E8913A',
       success: function(res) {
         if (res.confirm) {
           authLogout()

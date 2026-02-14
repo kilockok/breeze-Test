@@ -3,14 +3,14 @@
   <!-- Top bar: store / delivery info -->
   <view class="top-bar" bind:tap="goSelectStore">
     <view class="top-bar__left">
-      <text class="top-bar__icon">📍</text>
+      <view class="ic ic-md ic-location ic--primary top-bar__icon"></view>
       <view class="top-bar__info">
         <text class="top-bar__title">{{storeName || '请选择门店'}}</text>
         <text class="top-bar__sub" wx:if="{{orderType === 'delivery'}}">配送至: {{deliveryAddress || '请选择地址'}}</text>
-        <text class="top-bar__sub" wx:else>自取 · 到店取餐</text>
+        <text class="top-bar__sub" wx:else>自取 / 到店取餐</text>
       </view>
     </view>
-    <text class="top-bar__arrow">›</text>
+    <text class="top-bar__arrow">></text>
   </view>
 
   <!-- Main content: two-column layout -->
@@ -24,7 +24,7 @@
         data-id="{{item.id}}"
         bind:tap="switchCategory"
       >
-        <text class="sidebar__icon">{{item.icon}}</text>
+        <view class="ic ic-sm ic-{{item.icon}} sidebar__icon-view {{currentCategory === item.id ? 'ic--primary' : 'ic--gray'}}"></view>
         <text class="sidebar__text">{{item.name}}</text>
       </view>
     </scroll-view>
@@ -42,7 +42,7 @@
       >
         <!-- Product image placeholder -->
         <view class="product-card__img">
-          <text class="product-card__emoji">🧋</text>
+          <view class="ic ic-xl ic-cup ic--primary"></view>
         </view>
 
         <!-- Product info -->

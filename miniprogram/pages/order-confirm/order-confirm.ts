@@ -128,7 +128,7 @@ Page({
       title: '确认支付',
       content: `支付金额 ¥${totalPriceText}`,
       confirmText: '立即支付',
-      confirmColor: '#F5A623',
+      confirmColor: '#E8913A',
       success: (res) => {
         if (!res.confirm) return
 

@@ -2,7 +2,7 @@
   <view class="cart-bar__inner">
     <!-- Cart Icon with Badge -->
     <view class="cart-bar__icon-wrap">
-      <text class="cart-bar__icon">🛒</text>
+      <view class="ic ic-lg ic-cart ic--white"></view>
       <view class="cart-bar__badge" wx:if="{{count > 0}}">
         <text class="cart-bar__badge-text">{{count > 99 ? '99+' : count}}</text>
       </view>

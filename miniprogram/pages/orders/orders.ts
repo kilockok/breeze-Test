@@ -104,6 +104,10 @@ Page({
     wx.navigateTo({ url: `/pages/order-detail/order-detail?id=${id}` })
   },
 
+  goMenu() {
+    wx.switchTab({ url: '/pages/index/index' })
+  },
+
   reorder(e: WechatMiniprogram.TouchEvent) {
     const id = e.currentTarget.dataset.id
     const order = this.data.orders.find((o: Order) => o.id === id)

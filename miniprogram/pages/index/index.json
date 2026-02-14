@@ -1,4 +1,7 @@
 {
   "navigationBarTitleText": "清凤时光",
-  "navigationStyle": "custom"
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "spec-popup": "/components/spec-popup/spec-popup"
+  }
 }

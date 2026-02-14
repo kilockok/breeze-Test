@@ -2,19 +2,24 @@
 page {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-size: 28rpx;
-  color: #333333;
-  background-color: #F5F5F5;
+  color: #2D2D2D;
+  background-color: #F7F3EF;
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   --safe-bottom: env(safe-area-inset-bottom);
   --safe-top: env(safe-area-inset-top);
-  --color-primary: #F5A623;
-  --color-primary-dark: #FF8C42;
-  --color-text: #333333;
-  --color-text-secondary: #999999;
-  --color-bg: #F5F5F5;
-  --color-white: #ffffff;
-  --color-danger: #FF4D4F;
+  --color-primary: #E8913A;
+  --color-primary-dark: #D4792B;
+  --color-primary-light: #FFF5EB;
+  --color-text: #2D2D2D;
+  --color-text-secondary: #8C8C8C;
+  --color-bg: #F7F3EF;
+  --color-card: #FFFFFF;
+  --color-white: #FFFFFF;
+  --color-danger: #E74C3C;
+  --color-border: #F0ECE8;
+  --color-success: #52C41A;
+  --color-blue: #4A90D9;
 }
 
 /* ========== 色彩变量（通过 class 复用） ========== */
@@ -24,11 +29,12 @@ page {
 .text-white { color: var(--color-white); }
 
 .bg-primary { background-color: var(--color-primary); }
-.bg-white { background-color: var(--color-white); }
+.bg-white { background-color: var(--color-card); }
 .bg-light { background-color: var(--color-bg); }
 .bg-gradient {
   background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
 }
+.bg-warm { background-color: var(--color-primary-light); }
 
 /* ========== 通用布局 ========== */
 .container {
@@ -64,11 +70,11 @@ page {
 
 /* ========== 卡片 ========== */
 .card {
-  background: var(--color-white);
+  background: var(--color-card);
   border-radius: 24rpx;
   padding: 32rpx;
   margin-bottom: 24rpx;
-  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.04);
+  box-shadow: 0 2rpx 16rpx rgba(100, 70, 30, 0.06);
 }
 
 /* ========== 按钮 ========== */
@@ -125,7 +131,7 @@ page {
 /* ========== 分割线 ========== */
 .divider {
   height: 1rpx;
-  background: #EEEEEE;
+  background: var(--color-border);
   margin: 24rpx 0;
 }
 
@@ -217,4 +223,586 @@ page {
 @keyframes shimmer {
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
+}
+
+/* ==========================================================
+   CSS Icon System
+   图片优先 + CSS 兜底方案
+   后续替换为 <image src="/images/icons/ic-xxx.png"> 即可
+   ========================================================== */
+
+/* 图标基类 */
+.ic {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
+/* 尺寸变体 */
+.ic-xs  { width: 24rpx;  height: 24rpx;  font-size: 24rpx;  }
+.ic-sm  { width: 32rpx;  height: 32rpx;  font-size: 32rpx;  }
+.ic-md  { width: 44rpx;  height: 44rpx;  font-size: 44rpx;  }
+.ic-lg  { width: 56rpx;  height: 56rpx;  font-size: 56rpx;  }
+.ic-xl  { width: 72rpx;  height: 72rpx;  font-size: 72rpx;  }
+.ic-xxl { width: 100rpx; height: 100rpx; font-size: 100rpx; }
+.ic-huge { width: 140rpx; height: 140rpx; font-size: 140rpx; }
+
+/* 颜色变体 */
+.ic--primary { color: var(--color-primary); }
+.ic--dark    { color: var(--color-primary-dark); }
+.ic--white   { color: var(--color-white); }
+.ic--gray    { color: var(--color-text-secondary); }
+.ic--text    { color: var(--color-text); }
+.ic--danger  { color: var(--color-danger); }
+.ic--success { color: var(--color-success); }
+.ic--blue    { color: var(--color-blue); }
+
+/* ---- ic-location: 定位图标 ---- */
+.ic-location::before {
+  content: '';
+  width: 0.45em;
+  height: 0.45em;
+  border: 0.09em solid currentColor;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  box-sizing: border-box;
+}
+.ic-location::after {
+  content: '';
+  position: absolute;
+  width: 0.15em;
+  height: 0.15em;
+  background: currentColor;
+  border-radius: 50%;
+  top: 0.18em;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* ---- ic-cup: 茶饮杯 ---- */
+.ic-cup::before {
+  content: '';
+  width: 0.4em;
+  height: 0.5em;
+  border: 0.08em solid currentColor;
+  border-top: none;
+  border-radius: 0 0 0.1em 0.1em;
+  box-sizing: border-box;
+}
+.ic-cup::after {
+  content: '';
+  position: absolute;
+  width: 0.08em;
+  height: 0.3em;
+  background: currentColor;
+  border-radius: 0.04em;
+  top: 0.06em;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* ---- ic-pickup: 自取/到店 ---- */
+.ic-pickup::before {
+  content: '';
+  width: 0;
+  height: 0;
+  border-left: 0.3em solid transparent;
+  border-right: 0.3em solid transparent;
+  border-bottom: 0.22em solid currentColor;
+  position: absolute;
+  top: 0.08em;
+}
+.ic-pickup::after {
+  content: '';
+  width: 0.45em;
+  height: 0.3em;
+  border: 0.07em solid currentColor;
+  border-top: none;
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 0.1em;
+  border-radius: 0 0 0.04em 0.04em;
+}
+
+/* ---- ic-delivery: 外送/配送 ---- */
+.ic-delivery::before {
+  content: '';
+  width: 0.55em;
+  height: 0.3em;
+  border: 0.07em solid currentColor;
+  border-radius: 0.06em 0.12em 0 0;
+  box-sizing: border-box;
+  position: absolute;
+  top: 0.15em;
+}
+.ic-delivery::after {
+  content: '';
+  width: 0.14em;
+  height: 0.14em;
+  border: 0.06em solid currentColor;
+  border-radius: 50%;
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 0.1em;
+  left: 0.12em;
+  box-shadow: 0.28em 0 0 -0.01em currentColor;
+}
+
+/* ---- ic-shop: 门店 ---- */
+.ic-shop::before {
+  content: '';
+  width: 0.55em;
+  height: 0.12em;
+  background: currentColor;
+  border-radius: 0.06em 0.06em 0 0;
+  position: absolute;
+  top: 0.12em;
+}
+.ic-shop::after {
+  content: '';
+  width: 0.45em;
+  height: 0.32em;
+  border: 0.07em solid currentColor;
+  border-top: none;
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 0.12em;
+}
+
+/* ---- ic-hot: 热门/火焰 ---- */
+.ic-hot::before {
+  content: '';
+  width: 0.3em;
+  height: 0.45em;
+  background: currentColor;
+  border-radius: 0.15em 0.15em 0.08em 0.15em;
+  opacity: 0.85;
+}
+.ic-hot::after {
+  content: '';
+  position: absolute;
+  width: 0.14em;
+  height: 0.22em;
+  background: var(--color-primary-light, #FFF5EB);
+  border-radius: 0.07em 0.07em 0.04em 0.07em;
+  bottom: 0.18em;
+}
+
+/* ---- ic-blossom: 季节限定/花 ---- */
+.ic-blossom::before {
+  content: '';
+  width: 0.2em;
+  height: 0.2em;
+  background: currentColor;
+  border-radius: 50%;
+  box-shadow:
+    0.16em 0.12em 0 currentColor,
+    -0.16em 0.12em 0 currentColor,
+    0.1em -0.14em 0 currentColor,
+    -0.1em -0.14em 0 currentColor;
+  opacity: 0.8;
+}
+.ic-blossom::after {
+  content: '';
+  position: absolute;
+  width: 0.1em;
+  height: 0.1em;
+  background: var(--color-primary-dark, #D4792B);
+  border-radius: 50%;
+}
+
+/* ---- ic-gift: 礼物 ---- */
+.ic-gift::before {
+  content: '';
+  width: 0.45em;
+  height: 0.35em;
+  border: 0.07em solid currentColor;
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 0.1em;
+  border-radius: 0.04em;
+}
+.ic-gift::after {
+  content: '';
+  width: 0.55em;
+  height: 0.14em;
+  background: currentColor;
+  border-radius: 0.04em;
+  position: absolute;
+  top: 0.2em;
+}
+
+/* ---- ic-avatar: 默认头像 ---- */
+.ic-avatar::before {
+  content: '';
+  width: 0.3em;
+  height: 0.3em;
+  border: 0.07em solid currentColor;
+  border-radius: 50%;
+  box-sizing: border-box;
+  position: absolute;
+  top: 0.1em;
+}
+.ic-avatar::after {
+  content: '';
+  width: 0.5em;
+  height: 0.22em;
+  border: 0.07em solid currentColor;
+  border-bottom: none;
+  border-radius: 0.25em 0.25em 0 0;
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 0.1em;
+}
+
+/* ---- ic-camera: 相机 ---- */
+.ic-camera::before {
+  content: '';
+  width: 0.5em;
+  height: 0.35em;
+  border: 0.07em solid currentColor;
+  border-radius: 0.06em;
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 0.12em;
+}
+.ic-camera::after {
+  content: '';
+  width: 0.18em;
+  height: 0.18em;
+  border: 0.06em solid currentColor;
+  border-radius: 50%;
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 0.2em;
+}
+
+/* ---- ic-pending: 待支付/沙漏 ---- */
+.ic-pending::before {
+  content: '';
+  width: 0;
+  height: 0;
+  border-left: 0.18em solid transparent;
+  border-right: 0.18em solid transparent;
+  border-top: 0.22em solid currentColor;
+  position: absolute;
+  top: 0.12em;
+}
+.ic-pending::after {
+  content: '';
+  width: 0;
+  height: 0;
+  border-left: 0.18em solid transparent;
+  border-right: 0.18em solid transparent;
+  border-bottom: 0.22em solid currentColor;
+  position: absolute;
+  bottom: 0.12em;
+}
+
+/* ---- ic-done: 已完成/对勾 ---- */
+.ic-done::before {
+  content: '';
+  width: 0.5em;
+  height: 0.5em;
+  border: 0.07em solid currentColor;
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+.ic-done::after {
+  content: '';
+  position: absolute;
+  width: 0.22em;
+  height: 0.12em;
+  border-left: 0.07em solid currentColor;
+  border-bottom: 0.07em solid currentColor;
+  transform: rotate(-45deg);
+  top: 0.32em;
+}
+
+/* ---- ic-user: 个人信息 ---- */
+.ic-user::before {
+  content: '';
+  width: 0.22em;
+  height: 0.22em;
+  border: 0.06em solid currentColor;
+  border-radius: 50%;
+  box-sizing: border-box;
+  position: absolute;
+  top: 0.12em;
+}
+.ic-user::after {
+  content: '';
+  width: 0.38em;
+  height: 0.18em;
+  border: 0.06em solid currentColor;
+  border-bottom: none;
+  border-radius: 0.19em 0.19em 0 0;
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 0.14em;
+}
+
+/* ---- ic-phone: 电话 ---- */
+.ic-phone::before {
+  content: '';
+  width: 0.3em;
+  height: 0.5em;
+  border: 0.07em solid currentColor;
+  border-radius: 0.06em;
+  box-sizing: border-box;
+}
+.ic-phone::after {
+  content: '';
+  position: absolute;
+  width: 0.12em;
+  height: 0.03em;
+  background: currentColor;
+  bottom: 0.3em;
+  border-radius: 0.02em;
+}
+
+/* ---- ic-info: 信息/关于 ---- */
+.ic-info::before {
+  content: '';
+  width: 0.48em;
+  height: 0.48em;
+  border: 0.07em solid currentColor;
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+.ic-info::after {
+  content: '';
+  position: absolute;
+  width: 0.07em;
+  height: 0.16em;
+  background: currentColor;
+  bottom: 0.24em;
+  border-radius: 0.02em;
+  box-shadow: 0 -0.12em 0 currentColor;
+}
+
+/* ---- ic-clipboard: 剪贴板/空订单 ---- */
+.ic-clipboard::before {
+  content: '';
+  width: 0.4em;
+  height: 0.5em;
+  border: 0.07em solid currentColor;
+  border-radius: 0.06em;
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 0.08em;
+}
+.ic-clipboard::after {
+  content: '';
+  width: 0.18em;
+  height: 0.08em;
+  background: currentColor;
+  border-radius: 0.04em;
+  position: absolute;
+  top: 0.1em;
+}
+
+/* ---- ic-clock: 时钟 ---- */
+.ic-clock::before {
+  content: '';
+  width: 0.48em;
+  height: 0.48em;
+  border: 0.07em solid currentColor;
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+.ic-clock::after {
+  content: '';
+  position: absolute;
+  width: 0.07em;
+  height: 0.15em;
+  background: currentColor;
+  top: 0.22em;
+  left: 50%;
+  transform-origin: bottom center;
+  transform: translateX(-50%);
+  border-radius: 0.02em;
+  box-shadow: 0.06em 0.06em 0 -0.01em currentColor;
+}
+
+/* ---- ic-cart: 购物车 ---- */
+.ic-cart::before {
+  content: '';
+  width: 0.4em;
+  height: 0.3em;
+  border: 0.07em solid currentColor;
+  border-top: none;
+  border-radius: 0 0 0.08em 0.08em;
+  box-sizing: border-box;
+  position: absolute;
+  top: 0.12em;
+}
+.ic-cart::after {
+  content: '';
+  width: 0.1em;
+  height: 0.1em;
+  border: 0.06em solid currentColor;
+  border-radius: 50%;
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 0.1em;
+  left: 0.16em;
+  box-shadow: 0.2em 0 0 -0.01em currentColor;
+}
+
+/* ---- ic-search: 搜索 ---- */
+.ic-search::before {
+  content: '';
+  width: 0.35em;
+  height: 0.35em;
+  border: 0.07em solid currentColor;
+  border-radius: 50%;
+  box-sizing: border-box;
+  position: absolute;
+  top: 0.08em;
+  left: 0.08em;
+}
+.ic-search::after {
+  content: '';
+  width: 0.18em;
+  height: 0.07em;
+  background: currentColor;
+  border-radius: 0.04em;
+  position: absolute;
+  bottom: 0.14em;
+  right: 0.08em;
+  transform: rotate(45deg);
+}
+
+/* ---- ic-car: 外卖车 ---- */
+.ic-car::before {
+  content: '';
+  width: 0.5em;
+  height: 0.25em;
+  border: 0.07em solid currentColor;
+  border-radius: 0.08em 0.08em 0 0;
+  box-sizing: border-box;
+  position: absolute;
+  top: 0.16em;
+}
+.ic-car::after {
+  content: '';
+  width: 0.12em;
+  height: 0.12em;
+  border: 0.06em solid currentColor;
+  border-radius: 50%;
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 0.12em;
+  left: 0.14em;
+  box-shadow: 0.22em 0 0 -0.01em currentColor;
+}
+
+/* ---- ic-fruit: 鲜果茶 ---- */
+.ic-fruit::before {
+  content: '';
+  width: 0.38em;
+  height: 0.38em;
+  background: currentColor;
+  border-radius: 50% 50% 50% 10%;
+  opacity: 0.8;
+}
+.ic-fruit::after {
+  content: '';
+  position: absolute;
+  width: 0.1em;
+  height: 0.12em;
+  border-right: 0.06em solid currentColor;
+  border-top: 0.06em solid currentColor;
+  border-radius: 0 0.08em 0 0;
+  top: 0.1em;
+  right: 0.22em;
+}
+
+/* ---- ic-milk: 鲜奶 ---- */
+.ic-milk::before {
+  content: '';
+  width: 0.3em;
+  height: 0.42em;
+  border: 0.07em solid currentColor;
+  border-radius: 0 0 0.06em 0.06em;
+  box-sizing: border-box;
+}
+.ic-milk::after {
+  content: '';
+  position: absolute;
+  width: 0.38em;
+  height: 0.1em;
+  border: 0.06em solid currentColor;
+  border-bottom: none;
+  border-radius: 0.04em 0.04em 0 0;
+  box-sizing: border-box;
+  top: 0.16em;
+}
+
+/* ---- ic-cake: 甜点/蛋糕 ---- */
+.ic-cake::before {
+  content: '';
+  width: 0.45em;
+  height: 0.2em;
+  background: currentColor;
+  border-radius: 0.1em 0.1em 0 0;
+  position: absolute;
+  bottom: 0.12em;
+  opacity: 0.7;
+}
+.ic-cake::after {
+  content: '';
+  width: 0.35em;
+  height: 0.14em;
+  background: currentColor;
+  border-radius: 0.07em 0.07em 0 0;
+  position: absolute;
+  bottom: 0.3em;
+}
+
+/* ---- ic-making: 制作中 (同 cup 但带动画) ---- */
+.ic-making::before {
+  content: '';
+  width: 0.4em;
+  height: 0.5em;
+  border: 0.08em solid currentColor;
+  border-top: none;
+  border-radius: 0 0 0.1em 0.1em;
+  box-sizing: border-box;
+}
+.ic-making::after {
+  content: '';
+  position: absolute;
+  width: 0.08em;
+  height: 0.3em;
+  background: currentColor;
+  border-radius: 0.04em;
+  top: 0.06em;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* ---- ic-empty: 通用空状态 ---- */
+.ic-empty::before {
+  content: '';
+  width: 0.5em;
+  height: 0.4em;
+  border: 0.07em solid currentColor;
+  border-radius: 0.08em;
+  box-sizing: border-box;
+  opacity: 0.5;
+}
+.ic-empty::after {
+  content: '';
+  position: absolute;
+  width: 0.2em;
+  height: 0.07em;
+  background: currentColor;
+  border-radius: 0.04em;
+  opacity: 0.4;
+  box-shadow: 0 0.12em 0 currentColor;
 }

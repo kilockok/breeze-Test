@@ -4,9 +4,9 @@
   <view class="nav-bar" style="padding-top: {{statusBarHeight}}px;">
     <view class="nav-bar-inner" style="height: {{navBarHeight}}px;">
       <view class="nav-location" bindtap="goPickup">
-        <text class="nav-location-icon">📍</text>
+        <view class="ic ic-sm ic-location ic--white nav-location-icon"></view>
         <text class="nav-location-text">万达广场店</text>
-        <text class="nav-arrow">›</text>
+        <text class="nav-arrow">></text>
       </view>
       <view class="nav-brand">清凤时光</view>
       <view class="nav-placeholder"></view>
@@ -17,13 +17,13 @@
   <view style="height: {{statusBarHeight + navBarHeight}}px;"></view>
 
   <scroll-view class="scroll-area" scroll-y enhanced show-scrollbar="{{false}}">
-    <!-- Hi 用户名 问候 -->
+    <!-- 问候 -->
     <view class="greeting-section">
       <view class="greeting-row">
-        <text class="greeting-text" wx:if="{{isLoggedIn}}">Hi, {{nickName}} 👋</text>
-        <text class="greeting-text" wx:else>Hi, 欢迎来到清凤时光 ☕</text>
+        <text class="greeting-text" wx:if="{{isLoggedIn}}">Hi, {{nickName}}</text>
+        <text class="greeting-text" wx:else>Hi, 欢迎来到清凤时光</text>
       </view>
-      <text class="greeting-sub">今天想喝点什么？</text>
+      <text class="greeting-sub">今天想喝点什么?</text>
     </view>
 
     <!-- Banner 轮播 -->
@@ -48,7 +48,11 @@
               <view class="banner-subtitle">{{index === 0 ? '春日限定 清新上线' : index === 1 ? '邀好友一起喝奶茶' : '每周三 专属福利'}}</view>
               <view class="banner-btn">立即查看</view>
             </view>
-            <view class="banner-emoji">{{index === 0 ? '🌸' : index === 1 ? '🧋' : '🎉'}}</view>
+            <view class="banner-icon-wrap">
+              <view wx:if="{{index === 0}}" class="ic ic-xxl ic-blossom ic--white"></view>
+              <view wx:elif="{{index === 1}}" class="ic ic-xxl ic-cup ic--white"></view>
+              <view wx:else class="ic ic-xxl ic-gift ic--white"></view>
+            </view>
           </view>
         </swiper-item>
       </swiper>
@@ -56,49 +60,102 @@
 
     <!-- 入口卡片 -->
     <view class="entry-section">
-      <view class="entry-card entry-pickup" bindtap="goPickup" hover-class="entry-hover">
+      <view class="entry-card" bindtap="goPickup" hover-class="entry-hover">
         <view class="entry-icon-wrap entry-icon-pickup">
-          <text class="entry-icon">🏠</text>
+          <view class="ic ic-lg ic-pickup ic--primary"></view>
         </view>
         <view class="entry-info">
           <view class="entry-title">自取 Pick Up</view>
-          <view class="entry-subtitle">到店取 · 免排队</view>
+          <view class="entry-subtitle">到店取 / 免排队</view>
         </view>
-        <text class="entry-arrow">›</text>
+        <text class="entry-arrow">></text>
       </view>
-      <view class="entry-card entry-delivery" bindtap="goDelivery" hover-class="entry-hover">
+      <view class="entry-card" bindtap="goDelivery" hover-class="entry-hover">
         <view class="entry-icon-wrap entry-icon-delivery">
-          <text class="entry-icon">🛵</text>
+          <view class="ic ic-lg ic-delivery ic--success"></view>
         </view>
         <view class="entry-info">
           <view class="entry-title">外送 Delivery</view>
-          <view class="entry-subtitle">送到家 · 最快30min</view>
+          <view class="entry-subtitle">送到家 / 最快30min</view>
         </view>
-        <text class="entry-arrow">›</text>
+        <text class="entry-arrow">></text>
       </view>
     </view>
 
     <!-- 快捷入口 -->
     <view class="quick-section">
       <view class="quick-card" bindtap="goMenu" hover-class="entry-hover">
-        <text class="quick-emoji">🧋</text>
+        <view class="quick-icon-wrap">
+          <view class="ic ic-lg ic-cup ic--primary"></view>
+        </view>
         <text class="quick-label">全部菜单</text>
       </view>
       <view class="quick-card" bindtap="goPickup" hover-class="entry-hover">
-        <text class="quick-emoji">🏪</text>
+        <view class="quick-icon-wrap">
+          <view class="ic ic-lg ic-shop ic--primary"></view>
+        </view>
         <text class="quick-label">附近门店</text>
       </view>
       <view class="quick-card" bindtap="goMenu" hover-class="entry-hover">
-        <text class="quick-emoji">🔥</text>
+        <view class="quick-icon-wrap">
+          <view class="ic ic-lg ic-hot ic--danger"></view>
+        </view>
         <text class="quick-label">热门推荐</text>
       </view>
       <view class="quick-card" bindtap="goMenu" hover-class="entry-hover">
-        <text class="quick-emoji">🌸</text>
+        <view class="quick-icon-wrap">
+          <view class="ic ic-lg ic-blossom ic--primary"></view>
+        </view>
         <text class="quick-label">季节限定</text>
       </view>
+    </view>
+
+    <!-- 为你推荐 -->
+    <view class="recommend-section" wx:if="{{recommendProducts.length > 0}}">
+      <view class="section-header">
+        <text class="section-title">为你推荐</text>
+        <view class="section-more" bindtap="goMenu">
+          <text>查看更多</text>
+          <text class="section-more-arrow">></text>
+        </view>
+      </view>
+      <scroll-view class="recommend-scroll" scroll-x enhanced show-scrollbar="{{false}}">
+        <view class="recommend-list">
+          <view
+            class="recommend-card"
+            wx:for="{{recommendProducts}}"
+            wx:key="id"
+            data-id="{{item.id}}"
+            bindtap="showRecommendSpec"
+          >
+            <view class="recommend-img">
+              <view class="ic ic-xl ic-cup ic--primary"></view>
+            </view>
+            <view class="recommend-name">{{item.name}}</view>
+            <view class="recommend-desc">{{item.desc}}</view>
+            <view class="recommend-bottom">
+              <view class="recommend-price">
+                <text class="recommend-yen">¥</text>
+                <text class="recommend-amount">{{item.price}}</text>
+              </view>
+              <view class="recommend-add" data-id="{{item.id}}" catchtap="showRecommendSpec">
+                <text class="recommend-add-icon">+</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
     </view>
 
     <!-- 底部留白 -->
     <view class="bottom-spacer"></view>
   </scroll-view>
+
+  <!-- 规格弹窗 -->
+  <spec-popup
+    show="{{showSpec}}"
+    product="{{selectedProduct}}"
+    bind:confirm="onSpecConfirm"
+    bind:close="onSpecClose"
+  />
 </view>

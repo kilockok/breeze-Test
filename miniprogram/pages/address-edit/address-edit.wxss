@@ -1,13 +1,13 @@
 .container {
   min-height: 100vh;
-  background: #F5F5F5;
+  background: var(--color-bg);
   padding: 24rpx 4%;
   box-sizing: border-box;
 }
 
 /* Form Section */
 .form-section {
-  background: #FFFFFF;
+  background: var(--color-card);
   border-radius: 16rpx;
   overflow: hidden;
   animation: fadeInUp 0.35s ease-out;
@@ -42,7 +42,7 @@
 .form-input {
   flex: 1;
   font-size: 28rpx;
-  color: #333333;
+  color: var(--color-text);
   height: 48rpx;
   min-width: 0;
 }
@@ -54,7 +54,7 @@
 
 .picker-text {
   font-size: 28rpx;
-  color: #333333;
+  color: var(--color-text);
   line-height: 48rpx;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -68,7 +68,7 @@
 .form-textarea {
   flex: 1;
   font-size: 28rpx;
-  color: #333333;
+  color: var(--color-text);
   min-height: 80rpx;
   line-height: 1.6;
   min-width: 0;
@@ -94,10 +94,10 @@
   font-size: 32rpx;
   font-weight: bold;
   color: #FFFFFF;
-  background: linear-gradient(135deg, #F5A623, #F7B84E);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
   border-radius: 44rpx;
   box-sizing: border-box;
-  box-shadow: 0 6rpx 20rpx rgba(245, 166, 35, 0.35);
+  box-shadow: 0 6rpx 20rpx rgba(232, 145, 58, 0.3);
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
@@ -112,16 +112,16 @@
   line-height: 86rpx;
   text-align: center;
   font-size: 30rpx;
-  color: #F5A623;
-  border: 1rpx solid #F5A623;
+  color: var(--color-primary);
+  border: 1rpx solid var(--color-primary);
   border-radius: 44rpx;
   margin-top: 24rpx;
   box-sizing: border-box;
-  background: #FFFFFF;
+  background: var(--color-card);
   transition: transform 0.2s ease, background 0.2s ease;
 }
 
 .wx-btn:active {
   transform: scale(0.98);
-  background: #FFF8EE;
+  background: var(--color-primary-light);
 }

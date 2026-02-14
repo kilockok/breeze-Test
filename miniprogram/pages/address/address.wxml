@@ -14,11 +14,11 @@
       </view>
       <view class="card-actions">
         <view class="action-btn" catchtap="editAddress" data-index="{{index}}">
-          <text class="icon-edit">✎</text>
+          <text class="icon-edit">E</text>
           <text>编辑</text>
         </view>
         <view class="action-btn" catchtap="deleteAddress" data-index="{{index}}">
-          <text class="icon-delete">✕</text>
+          <text class="icon-delete">X</text>
           <text>删除</text>
         </view>
         <view class="action-btn action-default" catchtap="setDefault" data-index="{{index}}">
@@ -33,7 +33,7 @@
 
   <!-- Empty State -->
   <view class="empty-state" wx:else>
-    <image class="empty-icon" src="/images/empty-address.png" mode="aspectFit"></image>
+    <view class="ic ic-huge ic-clipboard ic--gray"></view>
     <text class="empty-text">暂无收货地址</text>
     <view class="empty-add-btn" bindtap="addAddress">添加地址</view>
   </view>

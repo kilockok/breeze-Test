@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:www.ui.cn)",
+      "Bash(if not exist \"D:\\\\Code\\\\breeze-Test\\\\miniprogram\\\\images\" mkdir \"D:\\\\Code\\\\breeze-Test\\\\miniprogram\\\\images\")"
+    ]
+  }
+}

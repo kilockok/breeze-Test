@@ -63,7 +63,8 @@
 
   <!-- Empty State -->
   <view class="empty-state" wx:if="{{filteredOrders.length === 0}}">
-    <text class="empty-icon">📋</text>
+    <view class="ic ic-huge ic-clipboard ic--gray"></view>
     <text class="empty-text">暂无订单</text>
+    <view class="empty-action" bindtap="goMenu">去点一杯</view>
   </view>
 </view>

@@ -4,7 +4,7 @@
   left: 0;
   right: 0;
   z-index: 999;
-  background: #333333;
+  background: #2D2D2D;
   border-radius: 24rpx 24rpx 0 0;
   animation: slideUp 0.35s cubic-bezier(0.32, 0.72, 0, 1);
 }
@@ -27,10 +27,6 @@
   flex-shrink: 0;
 }
 
-.cart-bar__icon {
-  font-size: 44rpx;
-}
-
 /* Badge */
 .cart-bar__badge {
   position: absolute;
@@ -39,7 +35,7 @@
   min-width: 32rpx;
   height: 32rpx;
   padding: 0 8rpx;
-  background: #E74C3C;
+  background: var(--color-danger, #E74C3C);
   border-radius: 32rpx;
   display: flex;
   align-items: center;
@@ -82,7 +78,7 @@
   flex-shrink: 0;
   height: 64rpx;
   padding: 0 36rpx;
-  background: #F5A623;
+  background: var(--color-primary, #E8913A);
   border-radius: 36rpx;
   display: flex;
   align-items: center;
@@ -115,5 +111,5 @@
 .cart-bar__safe-bottom {
   padding-bottom: constant(safe-area-inset-bottom);
   padding-bottom: env(safe-area-inset-bottom);
-  background: #333333;
+  background: #2D2D2D;
 }

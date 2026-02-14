@@ -3,14 +3,15 @@
 
   <!-- 订单类型指示 -->
   <view class="order-type-bar">
-    <image class="type-icon" src="/images/{{orderType === 'pickup' ? 'pickup' : 'delivery'}}.png" mode="aspectFit" />
+    <view wx:if="{{orderType === 'pickup'}}" class="ic ic-sm ic-pickup ic--white type-icon-view"></view>
+    <view wx:else class="ic ic-sm ic-delivery ic--white type-icon-view"></view>
     <text class="type-label">{{orderType === 'pickup' ? '到店自取' : '外卖配送'}}</text>
   </view>
 
   <!-- 自取：门店信息 -->
   <view class="card store-card" wx:if="{{orderType === 'pickup' && store}}">
     <view class="card-title-row">
-      <text class="card-icon">📍</text>
+      <view class="ic ic-sm ic-location ic--primary card-icon-view"></view>
       <text class="card-title">取餐门店</text>
     </view>
     <text class="store-name">{{store.name}}</text>
@@ -20,9 +21,9 @@
   <!-- 外送：配送地址 -->
   <view class="card address-card" wx:if="{{orderType === 'delivery'}}" bindtap="changeAddress">
     <view class="card-title-row">
-      <text class="card-icon">📍</text>
+      <view class="ic ic-sm ic-location ic--primary card-icon-view"></view>
       <text class="card-title">配送地址</text>
-      <text class="change-btn">修改 ›</text>
+      <text class="change-btn">修改 ></text>
     </view>
     <block wx:if="{{address}}">
       <view class="address-info">
@@ -42,7 +43,7 @@
   <!-- 商品列表 -->
   <view class="card items-card">
     <view class="card-title-row">
-      <text class="card-icon">🧋</text>
+      <view class="ic ic-sm ic-cup ic--primary card-icon-view"></view>
       <text class="card-title">商品清单</text>
     </view>
     <view class="item-row" wx:for="{{cartItems}}" wx:key="index">

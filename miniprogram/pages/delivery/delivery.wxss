@@ -1,6 +1,6 @@
 .delivery-page {
   min-height: 100vh;
-  background: #F5F5F5;
+  background: var(--color-bg);
   padding: 24rpx 4% 160rpx;
   box-sizing: border-box;
 }
@@ -9,12 +9,12 @@
 .address-card {
   display: flex;
   align-items: center;
-  background: #FFFFFF;
+  background: var(--color-card);
   border-radius: 16rpx;
   padding: 28rpx 24rpx;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2rpx 12rpx rgba(100, 70, 30, 0.06);
   transition: transform 0.2s ease;
   animation: fadeInUp 0.4s ease-out;
 }
@@ -29,7 +29,7 @@
   top: 0;
   bottom: 0;
   width: 8rpx;
-  background: #F5A623;
+  background: var(--color-primary);
   border-radius: 16rpx 0 0 16rpx;
 }
 
@@ -50,7 +50,7 @@
 .address-name {
   font-size: 32rpx;
   font-weight: 600;
-  color: #333333;
+  color: var(--color-text);
   margin-right: 16rpx;
 }
 
@@ -92,7 +92,7 @@
   width: 56rpx;
   height: 56rpx;
   border-radius: 50%;
-  background: #F5A623;
+  background: var(--color-primary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -112,11 +112,11 @@
 
 /* Info Card */
 .info-card {
-  background: #FFFFFF;
+  background: var(--color-card);
   border-radius: 16rpx;
   padding: 0 6%;
   margin-top: 24rpx;
-  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2rpx 12rpx rgba(100, 70, 30, 0.06);
   animation: fadeInUp 0.5s ease-out;
 }
 
@@ -135,7 +135,7 @@
 
 .info-value {
   font-size: 28rpx;
-  color: #333333;
+  color: var(--color-text);
   font-weight: 500;
   text-align: right;
   flex: 1;
@@ -160,8 +160,7 @@
   animation: fadeIn 0.6s ease-out;
 }
 
-.note-icon {
-  font-size: 28rpx;
+.note-icon-view {
   margin-right: 8rpx;
 }
 
@@ -177,8 +176,8 @@
   right: 0;
   bottom: 0;
   padding: 20rpx 6% calc(20rpx + env(safe-area-inset-bottom));
-  background: #FFFFFF;
-  box-shadow: 0 -2rpx 12rpx rgba(0, 0, 0, 0.06);
+  background: var(--color-card);
+  box-shadow: 0 -2rpx 12rpx rgba(100, 70, 30, 0.06);
   animation: slideUp 0.3s ease-out;
 }
 
@@ -192,8 +191,8 @@
   color: #FFFFFF;
   border: none;
   border-radius: 44rpx;
-  background: linear-gradient(135deg, #F5A623, #F7B84E);
-  box-shadow: 0 6rpx 20rpx rgba(245, 166, 35, 0.35);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  box-shadow: 0 6rpx 20rpx rgba(232, 145, 58, 0.3);
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
 

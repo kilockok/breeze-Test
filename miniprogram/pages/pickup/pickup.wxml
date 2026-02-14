@@ -3,7 +3,7 @@
   <!-- 搜索栏 -->
   <view class="search-bar">
     <view class="search-input-wrap">
-      <image class="search-icon" src="/images/icon-search.png" mode="aspectFit" />
+      <view class="ic ic-sm ic-search ic--gray search-icon-view"></view>
       <input
         class="search-input"
         placeholder="搜索门店"
@@ -40,8 +40,14 @@
           <text class="store-name">{{item.name}}</text>
           <view class="distance-badge">{{item.distanceText}}</view>
         </view>
-        <view class="store-address">📍 {{item.address}}</view>
-        <view class="store-hours">🕐 营业时间：{{item.hours}}</view>
+        <view class="store-detail-row">
+          <view class="ic ic-xs ic-location ic--gray store-detail-icon"></view>
+          <text class="store-address-text">{{item.address}}</text>
+        </view>
+        <view class="store-detail-row">
+          <view class="ic ic-xs ic-clock ic--gray store-detail-icon"></view>
+          <text class="store-hours-text">营业时间：{{item.hours}}</text>
+        </view>
       </view>
       <view class="store-action">
         <button
